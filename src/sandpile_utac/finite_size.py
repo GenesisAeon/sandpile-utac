@@ -7,10 +7,13 @@ exponents via data collapse: ρ_c(L) = ρ_c(∞) + a · L^(-1/ν).
 
 from __future__ import annotations
 
+from typing import Any
+
 import numpy as np
 
 from .avalanche_stats import fit_power_law_mle
 from .btw import BTWSandpile
+from .constants import SIGMA
 from .manna import MannaSandpile
 
 
@@ -31,7 +34,7 @@ class FiniteSizeScaler:
         self,
         model: str = "btw",
         L_values: list[int] | None = None,
-    ) -> dict:
+    ) -> dict[str, Any]:
         """
         Run sandpiles for each L and return per-size statistics.
 
@@ -66,7 +69,6 @@ class FiniteSizeScaler:
             tau_d, _ = fit_power_law_mle(durs)
 
             eta = np.clip(sp.density() / sp.z_c, 1e-6, 1.0 - 1e-6)
-            from .constants import SIGMA
             gamma = float(np.arctanh(eta) / SIGMA)
 
             taus_size.append(float(tau_s))

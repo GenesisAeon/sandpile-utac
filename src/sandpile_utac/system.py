@@ -42,18 +42,21 @@ from .manna import MannaSandpile
 # ── Optional genesis-os imports (stub when absent) ─────────────────────────
 
 try:
-    from genesis.core.crep import CREPTensor  # type: ignore[import]
-    from genesis.core.lagrangian import UnifiedLagrangian  # type: ignore[import]
-    from genesis.core.utac import UTAC_ODE, UTACParams  # type: ignore[import]
-    from genesis.mirror.phase_loop import PhaseTransitionLoop  # type: ignore[import]
+    from genesis.core.crep import CREPTensor
+    from genesis.core.lagrangian import UnifiedLagrangian
+    from genesis.core.utac import UTAC_ODE, UTACParams
+    from genesis.mirror.phase_loop import PhaseTransitionLoop
+
     _GENESIS_AVAILABLE = True
 except ImportError:
     _GENESIS_AVAILABLE = False
 
     class UTAC_ODE:  # type: ignore[no-redef]
         """Stub UTAC_ODE."""
+
         def __init__(self, r: float, K: float, sigma: float) -> None:
             self.r, self.K, self.sigma = r, K, sigma
+
         def fixed_point(self, Gamma: float) -> float:
             return self.K * float(np.tanh(self.sigma * Gamma))
 
@@ -73,6 +76,7 @@ except ImportError:
 
 # ── Ethics Gate ────────────────────────────────────────────────────────────
 
+
 class EthicsGateLight:
     """
     Lightweight safety gate (Phase H of GenesisAeon ethics protocol).
@@ -85,19 +89,19 @@ class EthicsGateLight:
     def __init__(self, threshold: float = ETHICS_TENSION_THRESHOLD) -> None:
         self.threshold = threshold
 
-    def check(self, state: dict, tension: float) -> dict:
+    def check(self, state: dict[str, Any], tension: float) -> dict[str, Any]:
         if tension > self.threshold:
             return {
                 "allowed": False,
                 "reason": (
-                    f"system tension η={tension:.4f} exceeds "
-                    f"Ethics-Gate threshold {self.threshold}"
+                    f"system tension η={tension:.4f} exceeds Ethics-Gate threshold {self.threshold}"
                 ),
             }
         return {"allowed": True, "reason": "ok"}
 
 
 # ── SandpileUTAC ─────────────────────────────────────────────────────────────
+
 
 class SandpileUTAC:
     """
@@ -142,13 +146,13 @@ class SandpileUTAC:
             K=float(self._sandpile.z_c),
             sigma=self.SIGMA,
         )
-        self._phase_events: list[dict] = []
+        self._phase_events: list[dict[str, int]] = []
         self._run_done: bool = False
-        self._run_meta: dict = {}
+        self._run_meta: dict[str, Any] = {}
 
     # ── Diamond interface ─────────────────────────────────────────────────────
 
-    def run_cycle(self, n_grains: int = 50_000, warmup_grains: int = 10_000) -> dict:
+    def run_cycle(self, n_grains: int = 50_000, warmup_grains: int = 10_000) -> dict[str, Any]:
         """
         Drive the sandpile for n_grains additions and collect phase events.
 
@@ -190,20 +194,20 @@ class SandpileUTAC:
         }
 
         return {
-            "crep":     crep,
-            "utac":     utac,
+            "crep": crep,
+            "utac": utac,
             "n_events": len(self._phase_events),
-            "meta":     self._run_meta,
+            "meta": self._run_meta,
         }
 
-    def get_crep_state(self) -> dict:
+    def get_crep_state(self) -> dict[str, float]:
         """Return {C, R, E, P, Gamma, eta} from the current sandpile state."""
         if not self._run_done:
             # Quick initialisation run so the interface is always callable
             self.run_cycle(n_grains=5_000, warmup_grains=2_000)
         return self._crep.compute(self._sandpile, self._phase_events)
 
-    def get_utac_state(self) -> dict:
+    def get_utac_state(self) -> dict[str, float]:
         """
         Return {H, dH_dt, H_star, K_eff} for the UTAC ODE representation.
 
@@ -219,17 +223,17 @@ class SandpileUTAC:
         H_star = self._utac_ode.fixed_point(Gamma)
         dH_dt = 1.0 / (self.L * self.L)
         return {
-            "H":      H,
-            "dH_dt":  dH_dt,
+            "H": H,
+            "dH_dt": dH_dt,
             "H_star": H_star,
-            "K_eff":  K_eff,
+            "K_eff": K_eff,
         }
 
-    def get_phase_events(self) -> list[dict]:
+    def get_phase_events(self) -> list[dict[str, int]]:
         """Return list of all recorded avalanche phase-transition events."""
         return list(self._phase_events)
 
-    def to_zenodo_record(self) -> dict:
+    def to_zenodo_record(self) -> dict[str, Any]:
         """
         Serialise the current run state as a Zenodo-compatible metadata record.
 
@@ -243,7 +247,7 @@ class SandpileUTAC:
         tension = crep["eta"]
         ethics = self._ethics_gate.check(state=utac, tension=tension)
 
-        record: dict = {
+        record: dict[str, Any] = {
             "title": f"sandpile-utac Package 22 — {self.model.upper()} L={self.L}",
             "description": (
                 "BTW/Manna sandpile SOC as UTAC continuous phase transition. "
@@ -269,7 +273,7 @@ class SandpileUTAC:
 
     # ── Extension methods ─────────────────────────────────────────────────────
 
-    def generate_crep_spectrum(self) -> dict:
+    def generate_crep_spectrum(self) -> dict[str, Any]:
         """
         Produce the complete cross-domain CREP Criticality Spectrum.
 
@@ -288,9 +292,7 @@ class SandpileUTAC:
             "table": atlas.summary_table(),
         }
 
-    def finite_size_scaling(
-        self, L_values: list[int] | None = None
-    ) -> dict:
+    def finite_size_scaling(self, L_values: list[int] | None = None) -> dict[str, Any]:
         """
         Finite-size scaling analysis across multiple grid sizes.
 
@@ -309,7 +311,4 @@ class SandpileUTAC:
         return BTW_GAMMA if self.model == "btw" else MANNA_GAMMA
 
     def __repr__(self) -> str:
-        return (
-            f"SandpileUTAC(model={self.model!r}, L={self.L}, "
-            f"run_done={self._run_done})"
-        )
+        return f"SandpileUTAC(model={self.model!r}, L={self.L}, run_done={self._run_done})"

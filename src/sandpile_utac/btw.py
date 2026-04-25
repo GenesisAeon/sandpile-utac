@@ -25,7 +25,7 @@ class BTWSandpile:
         self.L = L
         self.rng = np.random.default_rng(seed)
         self.grid: np.ndarray = np.zeros((L, L), dtype=np.int32)
-        self._recent_events: deque[dict] = deque(maxlen=max_history)
+        self._recent_events: deque[dict[str, int]] = deque(maxlen=max_history)
         self._total_grains: int = 0
         self._total_avalanches: int = 0
 
@@ -42,17 +42,17 @@ class BTWSandpile:
 
     # ── relaxation ───────────────────────────────────────────────────────────
 
-    def relax(self) -> dict:
+    def relax(self) -> dict[str, int]:
         """Relax to stability, collecting avalanche statistics."""
-        size = 0       # total site-topplings
-        duration = 0   # number of parallel steps
+        size = 0  # total site-topplings
+        duration = 0  # number of parallel steps
         while True:
             n = self.topple()
             if n == 0:
                 break
             size += n
             duration += 1
-        event: dict = {"size": size, "duration": duration}
+        event: dict[str, int] = {"size": size, "duration": duration}
         if size > 0:
             self._recent_events.append(event)
             self._total_avalanches += 1
@@ -68,10 +68,10 @@ class BTWSandpile:
         # Scatter gains to the four neighbours (open boundary = grains that
         # leave the grid are simply lost, so no wrapping).
         gain = np.zeros_like(self.grid)
-        gain[1:, :]  += unstable[:-1, :]  # row below receives from row above
-        gain[:-1, :] += unstable[1:, :]   # row above receives from row below
-        gain[:, 1:]  += unstable[:, :-1]  # col right receives from col left
-        gain[:, :-1] += unstable[:, 1:]   # col left receives from col right
+        gain[1:, :] += unstable[:-1, :]  # row below receives from row above
+        gain[:-1, :] += unstable[1:, :]  # row above receives from row below
+        gain[:, 1:] += unstable[:, :-1]  # col right receives from col left
+        gain[:, :-1] += unstable[:, 1:]  # col left receives from col right
         self.grid += gain
         return n
 
@@ -81,19 +81,19 @@ class BTWSandpile:
         """Average particles per site  ρ = Σgrid / L²."""
         return float(np.sum(self.grid)) / (self.L * self.L)
 
-    def recent_events(self) -> list[dict]:
+    def recent_events(self) -> list[dict[str, int]]:
         """Return copy of recent avalanche event list."""
         return list(self._recent_events)
 
     def recent_sizes(self) -> np.ndarray:
         """Avalanche sizes from recent history."""
-        return np.array([e["size"] for e in self._recent_events if e["size"] > 0],
-                        dtype=np.int64)
+        return np.array([e["size"] for e in self._recent_events if e["size"] > 0], dtype=np.int64)
 
     def recent_durations(self) -> np.ndarray:
         """Avalanche durations from recent history."""
-        return np.array([e["duration"] for e in self._recent_events if e["duration"] > 0],
-                        dtype=np.int64)
+        return np.array(
+            [e["duration"] for e in self._recent_events if e["duration"] > 0], dtype=np.int64
+        )
 
     # ── bulk seeding (fast fill to target density) ───────────────────────────
 

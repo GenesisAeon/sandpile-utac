@@ -153,11 +153,15 @@ class CREPSpectrumAtlas:
         )
         for bar, g in zip(bars, gammas, strict=True):
             ax.text(
-                g + 0.005, bar.get_y() + bar.get_height() / 2,
-                f"{g:.3f}", va="center", fontsize=9,
+                g + 0.005,
+                bar.get_y() + bar.get_height() / 2,
+                f"{g:.3f}",
+                va="center",
+                fontsize=9,
             )
-        ax.axvline(0.251, color="red", linestyle="--", linewidth=1.2,
-                   label="η = 50% homeostatic setpoint")
+        ax.axvline(
+            0.251, color="red", linestyle="--", linewidth=1.2, label="η = 50% homeostatic setpoint"
+        )
         ax.legend(fontsize=9)
         ax.set_xlim(0, max(gammas) * 1.15)
         plt.tight_layout()

@@ -6,6 +6,7 @@ import numpy as np
 
 # ── Maximum-likelihood power-law estimator ────────────────────────────────────
 
+
 def fit_power_law_mle(data: np.ndarray, x_min: float | None = None) -> tuple[float, float]:
     """
     Clauset–Shalizi–Newman MLE estimator for a discrete power-law exponent.
@@ -15,6 +16,8 @@ def fit_power_law_mle(data: np.ndarray, x_min: float | None = None) -> tuple[flo
     """
     data = np.asarray(data, dtype=float)
     data = data[data > 0]
+    if len(data) == 0:
+        return float("nan"), float("nan")
     if x_min is None:
         x_min = max(1.0, float(np.min(data)))
     data = data[data >= x_min]
@@ -43,6 +46,7 @@ def _ks_statistic(data: np.ndarray, tau: float, x_min: float) -> float:
 
 # ── Permutation entropy ───────────────────────────────────────────────────────
 
+
 def permutation_entropy(series: np.ndarray, order: int = 3) -> float:
     """
     Normalised permutation entropy of a 1-D time series.
@@ -53,7 +57,7 @@ def permutation_entropy(series: np.ndarray, order: int = 3) -> float:
     n = len(series)
     if n < order + 1:
         return 0.5  # insufficient data — return neutral value
-    patterns: dict[tuple, int] = {}
+    patterns: dict[tuple[int, ...], int] = {}
     for i in range(n - order + 1):
         key = tuple(int(k) for k in np.argsort(series[i : i + order]))
         patterns[key] = patterns.get(key, 0) + 1
@@ -61,11 +65,13 @@ def permutation_entropy(series: np.ndarray, order: int = 3) -> float:
     counts /= counts.sum()
     entropy = -float(np.sum(counts * np.log(counts + 1e-14)))
     import math
+
     max_entropy = math.log(math.factorial(order))
     return entropy / max_entropy if max_entropy > 0 else 0.0
 
 
 # ── Spatial correlation ───────────────────────────────────────────────────────
+
 
 def spatial_autocorrelation(grid: np.ndarray) -> float:
     """
@@ -84,6 +90,7 @@ def spatial_autocorrelation(grid: np.ndarray) -> float:
 
 
 # ── Proximity measure (how close tau is to theory) ───────────────────────────
+
 
 def tau_proximity(tau_measured: float, tau_theory: float, scale: float = 0.3) -> float:
     """

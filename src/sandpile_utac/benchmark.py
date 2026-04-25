@@ -6,6 +6,8 @@ Reference: Phys. Rev. E 111, 024111 (2025, Feb 12).
 
 from __future__ import annotations
 
+from typing import Any
+
 import numpy as np
 
 from .avalanche_stats import fit_power_law_mle
@@ -40,7 +42,7 @@ def run_benchmark(
     warmup: int = 20_000,
     seed: int = 42,
     verbose: bool = False,
-) -> dict:
+) -> dict[str, Any]:
     """
     Run BTW and Manna sandpiles and compare key observables against targets.
 
@@ -70,13 +72,13 @@ def run_benchmark(
     spectrum_ok = atlas.is_monotonic()
 
     measured = {
-        "btw_tau_size":         btw_tau_s,
-        "btw_tau_duration":     btw_tau_d,
+        "btw_tau_size": btw_tau_s,
+        "btw_tau_duration": btw_tau_d,
         "btw_critical_density": btw_eta,
-        "manna_tau_size":       manna_tau_s,
-        "gamma_btw":            btw_gamma,
-        "gamma_manna":          manna_gamma,
-        "spectrum_monotonic":   spectrum_ok,
+        "manna_tau_size": manna_tau_s,
+        "gamma_btw": btw_gamma,
+        "gamma_manna": manna_gamma,
+        "spectrum_monotonic": spectrum_ok,
     }
 
     passed: dict[str, bool] = {}
@@ -100,7 +102,7 @@ def run_benchmark(
     }
 
 
-def _print_report(measured: dict, passed: dict) -> None:
+def _print_report(measured: dict[str, Any], passed: dict[str, bool]) -> None:
     print("\nSandpile-UTAC Benchmark Report")
     print("=" * 50)
     for key, (target, _tol) in SANDPILE_TARGETS.items():

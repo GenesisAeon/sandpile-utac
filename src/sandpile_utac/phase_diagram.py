@@ -10,6 +10,8 @@ a > 0 for ρ > ρ_c  (active/supercritical phase)
 
 from __future__ import annotations
 
+from typing import Any
+
 import numpy as np
 
 from .btw import BTWSandpile
@@ -41,13 +43,15 @@ class PhaseDiagramScanner:
         rho_min: float = 0.1,
         rho_max: float = 0.95,
         n_points: int = 40,
-    ) -> dict:
+    ) -> dict[str, Any]:
         """
         Return {rho_values, activity, critical_density_estimate}.
 
         rho_values  — array of ρ / z_c  (normalised density η)
         activity    — mean toppling activity per grain at each η
         """
+        if model not in ("btw", "manna"):
+            raise ValueError(f"model must be 'btw' or 'manna', got '{model!r}'")
         etas = np.linspace(rho_min, rho_max, n_points)
         activities = np.zeros(n_points)
 
@@ -78,9 +82,7 @@ class PhaseDiagramScanner:
 
     # ── helpers ───────────────────────────────────────────────────────────────
 
-    def _estimate_critical_eta(
-        self, etas: np.ndarray, activity: np.ndarray
-    ) -> float:
+    def _estimate_critical_eta(self, etas: np.ndarray, activity: np.ndarray) -> float:
         """Estimate η_c as the η where d²activity/dη² is maximised."""
         if len(activity) < 4:
             return float(np.median(etas))

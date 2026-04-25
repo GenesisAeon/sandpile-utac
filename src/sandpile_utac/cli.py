@@ -11,10 +11,7 @@ from rich.table import Table
 
 app = typer.Typer(
     name="sandpile-utac",
-    help=(
-        "BTW/Manna sandpile SOC as UTAC continuous phase transition "
-        "(GenesisAeon Package 22)."
-    ),
+    help=("BTW/Manna sandpile SOC as UTAC continuous phase transition (GenesisAeon Package 22)."),
     add_completion=False,
     rich_markup_mode="rich",
 )
@@ -23,6 +20,7 @@ err = Console(stderr=True)
 
 
 # ── run ───────────────────────────────────────────────────────────────────────
+
 
 @app.command()
 def run(
@@ -53,24 +51,25 @@ def run(
 
     t = Table(show_header=False, box=None, padding=(0, 2))
     t.add_row("[bold]CREP state[/bold]", "")
-    t.add_row("  C (spatial correlation)",  f"{crep['C']:.4f}")
-    t.add_row("  R (resonance/power-law)",  f"{crep['R']:.4f}")
-    t.add_row("  E (emergence)",            f"{crep['E']:.4f}")
-    t.add_row("  P (permutation entropy)",  f"{crep['P']:.4f}")
-    t.add_row("  [bold]Gamma[/bold]",       f"[bold yellow]{crep['Gamma']:.4f}[/bold yellow]")
-    t.add_row("  eta (H/K)",                f"{crep['eta']:.4f}")
+    t.add_row("  C (spatial correlation)", f"{crep['C']:.4f}")
+    t.add_row("  R (resonance/power-law)", f"{crep['R']:.4f}")
+    t.add_row("  E (emergence)", f"{crep['E']:.4f}")
+    t.add_row("  P (permutation entropy)", f"{crep['P']:.4f}")
+    t.add_row("  [bold]Gamma[/bold]", f"[bold yellow]{crep['Gamma']:.4f}[/bold yellow]")
+    t.add_row("  eta (H/K)", f"{crep['eta']:.4f}")
     t.add_row("", "")
-    t.add_row("[bold]UTAC state[/bold]",    "")
-    t.add_row("  H  (density)",             f"{utac['H']:.4f}")
-    t.add_row("  H* (fixed point)",         f"{utac['H_star']:.4f}")
-    t.add_row("  K  (threshold)",           f"{utac['K_eff']:.0f}")
+    t.add_row("[bold]UTAC state[/bold]", "")
+    t.add_row("  H  (density)", f"{utac['H']:.4f}")
+    t.add_row("  H* (fixed point)", f"{utac['H_star']:.4f}")
+    t.add_row("  K  (threshold)", f"{utac['K_eff']:.0f}")
     t.add_row("", "")
-    t.add_row("Phase events (avalanches)",  f"{result['n_events']:,}")
-    t.add_row("Elapsed",                    f"{meta['elapsed_s']:.2f} s")
+    t.add_row("Phase events (avalanches)", f"{result['n_events']:,}")
+    t.add_row("Elapsed", f"{meta['elapsed_s']:.2f} s")
     console.print(t)
 
 
 # ── phase-diagram ─────────────────────────────────────────────────────────────
+
 
 @app.command(name="phase-diagram")
 def phase_diagram(
@@ -94,8 +93,10 @@ def phase_diagram(
     scanner = PhaseDiagramScanner(L=L, seed=seed)
     result = scanner.scan(model=model, rho_min=rho_min, rho_max=rho_max, n_points=n_points)
 
-    console.print(f"  Critical density estimate η_c ≈ "
-                  f"[bold yellow]{result['critical_density_estimate']:.3f}[/bold yellow]")
+    console.print(
+        f"  Critical density estimate η_c ≈ "
+        f"[bold yellow]{result['critical_density_estimate']:.3f}[/bold yellow]"
+    )
     t = Table("η", "Activity (topplings/grain)", show_header=True, box=None, padding=(0, 3))
     for eta, act in zip(result["rho_values"], result["activity"], strict=True):
         t.add_row(f"{eta:.3f}", f"{act:.1f}")
@@ -103,6 +104,7 @@ def phase_diagram(
 
 
 # ── crep-spectrum ─────────────────────────────────────────────────────────────
+
 
 @app.command(name="crep-spectrum")
 def crep_spectrum(
@@ -127,6 +129,7 @@ def crep_spectrum(
 
 # ── benchmark ─────────────────────────────────────────────────────────────────
 
+
 @app.command()
 def benchmark(
     L: Annotated[int, typer.Option("--L")] = 64,
@@ -149,10 +152,12 @@ def benchmark(
 
 # ── version ───────────────────────────────────────────────────────────────────
 
+
 @app.command()
 def version() -> None:
     """Show sandpile-utac version."""
     from . import __version__
+
     console.print(f"sandpile-utac [bold]{__version__}[/bold]")
 
 

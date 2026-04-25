@@ -45,7 +45,9 @@ class CREPSandpile:
 
     # ── main entry point ──────────────────────────────────────────────────────
 
-    def compute(self, sandpile: BTWSandpile, avalanche_history: list[dict]) -> dict:
+    def compute(
+        self, sandpile: BTWSandpile, avalanche_history: list[dict[str, int]]
+    ) -> dict[str, float]:
         """Return full CREP state dict for the given sandpile and history."""
         H = sandpile.density()
         K = float(sandpile.z_c)
