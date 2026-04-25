@@ -4,7 +4,6 @@ import pytest
 
 from sandpile_utac.system import EthicsGateLight, SandpileUTAC
 
-
 # ── Diamond contract ──────────────────────────────────────────────────────────
 
 class TestDiamondContract:

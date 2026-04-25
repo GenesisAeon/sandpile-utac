@@ -28,12 +28,11 @@ import numpy as np
 
 from .btw import BTWSandpile
 from .constants import (
+    BTW_GAMMA,
     ETHICS_TENSION_THRESHOLD,
     MANNA_GAMMA,
     PACKAGE_REGISTRY,
-    SANDPILE_TARGETS,
     SIGMA,
-    BTW_GAMMA,
 )
 from .crep_sandpile import CREPSandpile
 from .crep_spectrum import CREPSpectrumAtlas
@@ -43,10 +42,10 @@ from .manna import MannaSandpile
 # ── Optional genesis-os imports (stub when absent) ─────────────────────────
 
 try:
-    from genesis.core.utac import UTAC_ODE, UTACParams  # type: ignore[import]
     from genesis.core.crep import CREPTensor  # type: ignore[import]
-    from genesis.mirror.phase_loop import PhaseTransitionLoop  # type: ignore[import]
     from genesis.core.lagrangian import UnifiedLagrangian  # type: ignore[import]
+    from genesis.core.utac import UTAC_ODE, UTACParams  # type: ignore[import]
+    from genesis.mirror.phase_loop import PhaseTransitionLoop  # type: ignore[import]
     _GENESIS_AVAILABLE = True
 except ImportError:
     _GENESIS_AVAILABLE = False

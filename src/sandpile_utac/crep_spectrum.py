@@ -151,7 +151,7 @@ class CREPSpectrumAtlas:
             r"$\Gamma = \tanh^{-1}(\eta) / \sigma$",
             fontsize=12,
         )
-        for bar, g in zip(bars, gammas):
+        for bar, g in zip(bars, gammas, strict=True):
             ax.text(
                 g + 0.005, bar.get_y() + bar.get_height() / 2,
                 f"{g:.3f}", va="center", fontsize=9,

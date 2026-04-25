@@ -80,13 +80,13 @@ def run_benchmark(
     }
 
     passed: dict[str, bool] = {}
-    for key, (target, tol) in SANDPILE_TARGETS.items():
+    for key, (target, rel_tol) in SANDPILE_TARGETS.items():
         val = measured[key]
-        if tol is None:
+        if rel_tol is None:
             passed[key] = bool(val) == bool(target)
         else:
             if isinstance(val, float) and np.isfinite(val):
-                passed[key] = abs(val - target) <= tol * abs(target) + 1e-9
+                passed[key] = abs(val - target) <= rel_tol * abs(target) + 1e-9
             else:
                 passed[key] = False
 
@@ -103,7 +103,7 @@ def run_benchmark(
 def _print_report(measured: dict, passed: dict) -> None:
     print("\nSandpile-UTAC Benchmark Report")
     print("=" * 50)
-    for key, (target, tol) in SANDPILE_TARGETS.items():
+    for key, (target, _tol) in SANDPILE_TARGETS.items():
         val = measured[key]
         ok = passed[key]
         mark = "✓" if ok else "✗"

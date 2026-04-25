@@ -1,11 +1,9 @@
 """Unit tests for BTW and Manna sandpile models."""
 
 import numpy as np
-import pytest
 
 from sandpile_utac.btw import BTWSandpile
 from sandpile_utac.manna import MannaSandpile
-
 
 # ── BTWSandpile ───────────────────────────────────────────────────────────────
 

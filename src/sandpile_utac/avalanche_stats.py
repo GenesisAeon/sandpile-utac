@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import numpy as np
 
-
 # ── Maximum-likelihood power-law estimator ────────────────────────────────────
 
 def fit_power_law_mle(data: np.ndarray, x_min: float | None = None) -> tuple[float, float]:

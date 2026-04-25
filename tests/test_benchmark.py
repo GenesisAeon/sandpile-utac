@@ -6,15 +6,12 @@ These tests use small L and few grains so they run quickly.  The full benchmark
 """
 
 import numpy as np
-import pytest
 
 from sandpile_utac.avalanche_stats import fit_power_law_mle, permutation_entropy
 from sandpile_utac.benchmark import run_benchmark
 from sandpile_utac.btw import BTWSandpile
-from sandpile_utac.constants import BTW_GAMMA, BTW_TAU_SIZE, MANNA_GAMMA, SIGMA
+from sandpile_utac.constants import BTW_GAMMA, SIGMA
 from sandpile_utac.crep_sandpile import CREPSandpile
-from sandpile_utac.manna import MannaSandpile
-
 
 # ── avalanche_stats helpers ───────────────────────────────────────────────────
 

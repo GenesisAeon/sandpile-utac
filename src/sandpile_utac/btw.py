@@ -104,7 +104,7 @@ class BTWSandpile:
         to_add = max(0, target_total - current)
         xs = self.rng.integers(0, self.L, size=to_add)
         ys = self.rng.integers(0, self.L, size=to_add)
-        for x, y in zip(xs, ys):
+        for x, y in zip(xs, ys, strict=True):
             self.grid[int(x), int(y)] += 1
             self._total_grains += 1
             if relax_each:

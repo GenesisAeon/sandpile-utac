@@ -97,7 +97,7 @@ def phase_diagram(
     console.print(f"  Critical density estimate η_c ≈ "
                   f"[bold yellow]{result['critical_density_estimate']:.3f}[/bold yellow]")
     t = Table("η", "Activity (topplings/grain)", show_header=True, box=None, padding=(0, 3))
-    for eta, act in zip(result["rho_values"], result["activity"]):
+    for eta, act in zip(result["rho_values"], result["activity"], strict=True):
         t.add_row(f"{eta:.3f}", f"{act:.1f}")
     console.print(t)
 
