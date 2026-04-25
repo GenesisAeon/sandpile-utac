@@ -1,23 +1,25 @@
 [project]
-name = "diamond-setup"
-version = "1.0.0"
-description = "Universal Python project scaffold â€” generate professional project skeletons in seconds"
+name = "sandpile-utac"
+version = "0.1.0"
+description = "BTW/Manna sandpile SOC as UTAC continuous phase transition — GenesisAeon Package 22"
 readme = "README.md"
 license = { text = "MIT" }
-authors = [{ name = "GenesisAeon" }]
+authors = [{ name = "Johann Römer", email = "contact@mor-research.org" }]
 requires-python = ">=3.11"
-keywords = ["scaffold", "template", "cli", "project-generator", "skeleton"]
+keywords = ["sandpile", "SOC", "UTAC", "CREP", "phase-transition", "criticality", "genesis-aeon"]
 classifiers = [
-    "Development Status :: 5 - Production/Stable",
+    "Development Status :: 3 - Alpha",
     "Environment :: Console",
-    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "Topic :: Software Development :: Code Generators",
+    "Topic :: Scientific/Engineering :: Physics",
 ]
 dependencies = [
+    "numpy>=1.26.0",
+    "scipy>=1.12.0",
     "typer>=0.12.0",
     "rich>=13.7.0",
     "pyyaml>=6.0",
@@ -25,6 +27,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+plot = [
+    "matplotlib>=3.8.0",
+]
 docs = [
     "mkdocs>=1.6.0",
     "mkdocs-material>=9.5.0",
@@ -38,21 +43,22 @@ dev = [
 ]
 
 [project.scripts]
-diamond = "diamond_setup.cli:app"
+diamond      = "diamond_setup.cli:app"
+sandpile-utac = "sandpile_utac.cli:app"
 
 [project.urls]
-Homepage = "https://github.com/GenesisAeon/diamond-setup"
-Repository = "https://github.com/GenesisAeon/diamond-setup"
-Documentation = "https://genesisaeon.github.io/diamond-setup"
-Issues = "https://github.com/GenesisAeon/diamond-setup/issues"
-Zenodo = "https://doi.org/10.5281/zenodo.XXXXXXX"
+Homepage      = "https://github.com/GenesisAeon/sandpile-utac"
+Repository    = "https://github.com/GenesisAeon/sandpile-utac"
+Documentation = "https://genesisaeon.github.io/sandpile-utac"
+Issues        = "https://github.com/GenesisAeon/sandpile-utac/issues"
+Zenodo        = "https://doi.org/10.5281/zenodo.19645351"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/diamond_setup"]
+packages = ["src/diamond_setup", "src/sandpile_utac"]
 
 [tool.ruff]
 line-length = 100
@@ -60,14 +66,14 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "B", "I", "W", "UP", "C4", "SIM"]
-ignore = ["B008"]  # typer uses function calls in defaults
+ignore = ["B008"]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**" = ["S101"]  # allow assert in tests
+"tests/**" = ["S101"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "--cov=diamond_setup --cov-report=term-missing -v"
+addopts = "--cov=diamond_setup --cov=sandpile_utac --cov-report=term-missing -v"
 
 [tool.coverage.run]
 source = ["src"]
@@ -79,4 +85,3 @@ strict = true
 warn_return_any = true
 warn_unused_configs = true
 ignore_missing_imports = true
-
