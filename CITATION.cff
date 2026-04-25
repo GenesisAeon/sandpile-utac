@@ -1,0 +1,64 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "sandpile-utac: BTW/Manna Sandpile SOC as UTAC Continuous Phase Transition"
+version: "0.1.0"
+date-released: "2026-04-25"
+license: MIT
+repository-code: "https://github.com/GenesisAeon/sandpile-utac"
+
+authors:
+  - family-names: Römer
+    given-names: Johann
+    affiliation: MOR Research Collective
+
+abstract: >
+  GenesisAeon Package 22. Implements the BTW (Bak-Tang-Wiesenfeld) and
+  Manna stochastic sandpile models as UTAC (Universal Threshold-Activity
+  Cascade) continuous phase transitions, calibrated against
+  Phys. Rev. E 111, 024111 (2025). Provides the complete CREP Criticality
+  Spectrum Atlas mapping Γ values across all GenesisAeon domains
+  (solar flares, Amazon forest, AMOC, neural criticality, sandpile SOC).
+
+keywords:
+  - self-organized criticality
+  - sandpile model
+  - BTW
+  - Manna
+  - phase transition
+  - CREP tensor
+  - UTAC
+  - GenesisAeon
+
+references:
+  - type: article
+    authors:
+      - family-names: Bak
+        given-names: Per
+      - family-names: Tang
+        given-names: Chao
+      - family-names: Wiesenfeld
+        given-names: Kurt
+    title: "Self-organized criticality: An explanation of the 1/f noise"
+    journal: Physical Review Letters
+    volume: 59
+    pages: 381
+    year: 1987
+    doi: 10.1103/PhysRevLett.59.381
+  - type: article
+    title: "Describing self-organized criticality as a continuous phase transition"
+    journal: Physical Review E
+    volume: 111
+    pages: "024111"
+    year: 2025
+    doi: 10.1103/PhysRevE.111.024111
+  - type: article
+    authors:
+      - family-names: Muñoz
+        given-names: Miguel A.
+    title: "Colloquium: Criticality and dynamical scaling in living systems"
+    journal: Reviews of Modern Physics
+    volume: 90
+    pages: "031001"
+    year: 2018
+    doi: 10.1103/RevModPhys.90.031001
