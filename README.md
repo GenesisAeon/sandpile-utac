@@ -2,10 +2,13 @@
 
 > GenesisAeon Package 22 — BTW & Manna Sandpile as Continuous Phase Transition
 
-[![GenesisAeon](https://img.shields.io/badge/GenesisAeon-Package%2022-blueviolet)](https://github.com/GenesisAeon)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19645351.svg)](https://doi.org/10.5281/zenodo.19645351)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Reference](https://img.shields.io/badge/Ref-PhysRevE%202025-red)](https://doi.org/10.1103/PhysRevE.111.024111)
+<p align="center">
+  <a href="https://doi.org/10.5281/zenodo.19645351"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19645351.svg" alt="DOI (GenesisAeon Whitepaper)"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="GPLv3 License"/></a>
+  <a href="https://creativecommons.org/licenses/by/4.0/"><img src="https://img.shields.io/badge/docs-CC%20BY%204.0-lightblue.svg" alt="CC BY 4.0"/></a>
+  <a href="https://github.com/GenesisAeon/genesis-os"><img src="https://img.shields.io/badge/part%20of-genesis--os-blueviolet" alt="Part of genesis-os"/></a>
+  <img src="https://img.shields.io/badge/UTAC-package%2020-orange" alt="Package 20"/>
+</p>
 
 **Bak–Tang–Wiesenfeld & Manna sandpiles as UTAC phase transitions.**
 
