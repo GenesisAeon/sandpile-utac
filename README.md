@@ -45,6 +45,22 @@ Validated against Phys. Rev. E (2025).
 
 Systems with η = 50 % converge to Γ ≈ 0.25 across all domains.
 
+## Role in the GenesisAeon Ecosystem
+
+`sandpile-utac` is GenesisAeon Package **P22**, in the **statistical
+mechanics / self-organized criticality** domain. It validates the UTAC
+(Universal Threshold Activation Criticality) methodology against the
+canonical Bak–Tang–Wiesenfeld and Manna sandpile models — the
+prototypical self-organized-criticality benchmark — anchoring the CREP
+Criticality Spectrum at Γ ≈ 0.296 (BTW) and Γ ≈ 0.376 (Manna).
+
+## Citation
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.PLACEHOLDER)
+
+DOI will be assigned automatically on first GitHub Release once
+Zenodo–GitHub integration is enabled for this repo.
+
 ## License
 
 Code: MIT • Docs & Data: CC BY 4.0

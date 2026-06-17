@@ -1,6 +1,6 @@
 {
-  "title": "sandpile-utac v0.1.0: UTAC Validation on Bak-Tang-Wiesenfeld Sandpile Criticality",
-  "version": "0.1.0",
+  "title": "sandpile-utac v1.0.0: UTAC Validation on Bak-Tang-Wiesenfeld Sandpile Criticality",
+  "version": "1.0.0",
   "upload_type": "software",
   "access_right": "open",
   "language": "eng",
@@ -10,13 +10,13 @@
       "affiliation": "GenesisAeon (Independent Researcher)"
     }
   ],
-  "description": "sandpile-utac v0.1.0 validates UTAC (Universal Threshold Activation Criticality) against the canonical Bak-Tang-Wiesenfeld (BTW) sandpile model — the prototypical self-organized criticality benchmark. The UTAC-Logistic ODE recovers the known power-law avalanche distributions and critical threshold without parameter tuning. CREP metrics characterise the coherence and emergence of avalanche cascades. Serves as the primary unit-validation benchmark for the GenesisAeon UTAC methodology. Dual-licensed: GPLv3-or-later (code) + CC BY 4.0 (documentation).",
+  "description": "sandpile-utac v1.0.0 validates UTAC (Universal Threshold Activation Criticality) against the canonical Bak-Tang-Wiesenfeld (BTW) sandpile model — the prototypical self-organized criticality benchmark. The UTAC-Logistic ODE recovers the known power-law avalanche distributions and critical threshold without parameter tuning. CREP metrics characterise the coherence and emergence of avalanche cascades. Serves as the primary unit-validation benchmark for the GenesisAeon UTAC methodology. Dual-licensed: GPLv3-or-later (code) + CC BY 4.0 (documentation).",
   "keywords": [
     "genesis-aeon", "utac", "crep", "criticality", "self-organized-criticality",
     "mirror-machine", "fractal", "sandpile", "bak-tang-wiesenfeld",
     "avalanche", "power-law", "emergence"
   ],
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "related_identifiers": [
     {
       "identifier": "https://doi.org/10.5281/zenodo.19645351",
@@ -29,5 +29,8 @@
       "relation": "isSupplementTo",
       "scheme": "url"
     }
+  ],
+  "communities": [
+    { "identifier": "genesisaeon" }
   ]
 }

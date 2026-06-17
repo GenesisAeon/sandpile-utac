@@ -1,6 +1,6 @@
 [project]
 name = "sandpile-utac"
-version = "0.1.0"
+version = "1.0.0"
 description = "BTW/Manna sandpile SOC as UTAC continuous phase transition — GenesisAeon Package 22"
 readme = "README.md"
 license = { text = "MIT" }
