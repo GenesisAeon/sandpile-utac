@@ -16,7 +16,7 @@
     "mirror-machine", "fractal", "sandpile", "bak-tang-wiesenfeld",
     "avalanche", "power-law", "emergence"
   ],
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "related_identifiers": [
     {
       "identifier": "https://doi.org/10.5281/zenodo.19645351",
