@@ -4,10 +4,9 @@
 
 <p align="center">
   <a href="https://doi.org/10.5281/zenodo.19645351"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.19645351.svg" alt="DOI (GenesisAeon Whitepaper)"/></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="GPLv3 License"/></a>
-  <a href="https://creativecommons.org/licenses/by/4.0/"><img src="https://img.shields.io/badge/docs-CC%20BY%204.0-lightblue.svg" alt="CC BY 4.0"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License"/></a>
   <a href="https://github.com/GenesisAeon/genesis-os"><img src="https://img.shields.io/badge/part%20of-genesis--os-blueviolet" alt="Part of genesis-os"/></a>
-  <img src="https://img.shields.io/badge/UTAC-package%2020-orange" alt="Package 20"/>
+  <img src="https://img.shields.io/badge/UTAC-package%2022-orange" alt="Package 22"/>
 </p>
 
 **Bak–Tang–Wiesenfeld & Manna sandpiles as UTAC phase transitions.**
@@ -15,6 +14,12 @@
 **Key result**: BTW Γ ≈ 0.296, Manna Γ ≈ 0.376 — anchors the CREP criticality spectrum.
 
 ## Installation
+
+```bash
+pip install sandpile-utac
+```
+
+For development:
 
 ```bash
 pip install -e ".[dev]"
@@ -63,4 +68,4 @@ Zenodo–GitHub integration is enabled for this repo.
 
 ## License
 
-Code: MIT • Docs & Data: CC BY 4.0
+MIT — see [LICENSE](LICENSE).
