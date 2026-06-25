@@ -17,5 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 - Project metadata (`pyproject.toml`) bumped from `0.1.0` to `1.0.0`.
-- `.zenodo.json` license corrected from `GPL-3.0-or-later` to `MIT` to
-  match the repository's actual `LICENSE` file and `pyproject.toml`.
+
+### Fixed
+- Corrected a licensing inconsistency: `LICENSE`, `pyproject.toml`,
+  `CITATION.cff`, `.zenodo.json`, and `README.md` now consistently
+  specify GPL-3.0-or-later for code and CC BY 4.0 for documentation/data
+  — the package's intended (copyleft) license. An intermediate revision
+  had incorrectly drifted to MIT; this restores the correct license.

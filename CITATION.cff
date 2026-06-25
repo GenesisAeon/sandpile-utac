@@ -4,7 +4,7 @@ type: software
 title: "sandpile-utac: BTW/Manna Sandpile SOC as UTAC Continuous Phase Transition"
 version: "0.1.0"
 date-released: "2026-04-25"
-license: MIT
+license: GPL-3.0-or-later
 repository-code: "https://github.com/GenesisAeon/sandpile-utac"
 
 authors:

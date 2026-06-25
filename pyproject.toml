@@ -3,7 +3,7 @@ name = "sandpile-utac"
 version = "1.0.0"
 description = "BTW/Manna sandpile SOC as UTAC continuous phase transition — GenesisAeon Package 22"
 readme = "README.md"
-license = { text = "MIT" }
+license = { text = "GPL-3.0-or-later" }
 authors = [{ name = "Johann Römer", email = "contact@mor-research.org" }]
 requires-python = ">=3.10"
 keywords = ["sandpile", "SOC", "UTAC", "CREP", "phase-transition", "criticality", "genesis-aeon"]
@@ -11,7 +11,7 @@ classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Console",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
