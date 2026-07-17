@@ -24,6 +24,7 @@ dependencies = [
     "rich>=13.7.0",
     "pyyaml>=6.0",
     "pydantic>=2.7",
+    "diamond-setup>=2.2.0",
 ]
 
 [project.optional-dependencies]
@@ -60,7 +61,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/diamond_setup", "src/sandpile_utac"]
+packages = ["src/sandpile_utac"]
 
 [tool.ruff]
 line-length = 100
