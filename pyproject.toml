@@ -54,7 +54,7 @@ Homepage      = "https://github.com/GenesisAeon/sandpile-utac"
 Repository    = "https://github.com/GenesisAeon/sandpile-utac"
 Documentation = "https://genesisaeon.github.io/sandpile-utac"
 Issues        = "https://github.com/GenesisAeon/sandpile-utac/issues"
-Zenodo        = "https://doi.org/10.5281/zenodo.19645351"
+Zenodo        = "https://doi.org/10.5281/zenodo.20842804"
 
 [build-system]
 requires = ["hatchling"]

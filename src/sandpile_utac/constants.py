@@ -51,7 +51,7 @@ PACKAGE_REGISTRY: dict[int, dict[str, str]] = {
         "class": "SandpileUTAC",
         "domain": "statistical-mechanics",
         "scale": "universal",
-        "zenodo": "10.5281/zenodo.19645351",
+        "zenodo": "10.5281/zenodo.20842804",
         "reference": "10.1103/PhysRevE.111.024111",
     }
 }
